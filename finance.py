@@ -6,7 +6,7 @@ def savings_goal(monthly_income, percentage):
 def remaining_income(income, expenses):
     if expenses < 0:
         raise ValueError("Expenses cannot be negative")
-    return income + expenses
+    return income - expenses
 
 if __name__ == "__main__":
     print("Savings target amount:", savings_goal(5000, 20))
