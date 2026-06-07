@@ -26,7 +26,7 @@
             const revenue = document.getElementById("revenue").value;
             const cost = document.getElementById("cost").value;
 
-            const response = await fetch("http://localhost:7071/api/calculate", {
+            const response = await fetch("https://finance-tool-backend-rika-h7c0a6ekh6fmhrf9.spaincentral-01.azurewebsites.net/api/calculate", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
