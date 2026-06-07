@@ -1,0 +1,21 @@
+method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    revenue: revenue,
+                    cost: cost
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.profit !== undefined) {
+                document.getElementById("result").innerText = "Profit: $" + data.profit;
+            } else {
+                document.getElementById("result").innerText = "Error: " + data.error;
+            }
+        }
+    </script>
+</body>
+</html>
