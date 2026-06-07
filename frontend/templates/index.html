@@ -1,4 +1,33 @@
-method: "POST",
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Finance Tool</title>
+</head>
+<body>
+    <h1>Finance Tool</h1>
+    <p>Enter revenue and cost to calculate profit.</p>
+
+    <label>Revenue:</label>
+    <input type="number" id="revenue">
+
+    <br><br>
+
+    <label>Cost:</label>
+    <input type="number" id="cost">
+
+    <br><br>
+
+    <button onclick="calculateProfit()">Calculate Profit</button>
+
+    <h2 id="result"></h2>
+
+    <script>
+        async function calculateProfit() {
+            const revenue = document.getElementById("revenue").value;
+            const cost = document.getElementById("cost").value;
+
+            const response = await fetch("http://localhost:7071/api/calculate", {
+                method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
