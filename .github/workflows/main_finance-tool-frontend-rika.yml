@@ -73,6 +73,6 @@ jobs:
         with:
           app-name: 'finance-tool-frontend-rika'
           slot-name: 'Production'
-          package: frontend
+          package: .
       
           
