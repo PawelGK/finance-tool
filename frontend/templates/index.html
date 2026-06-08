@@ -25,24 +25,31 @@
         async function calculateProfit() {
             const revenue = document.getElementById("revenue").value;
             const cost = document.getElementById("cost").value;
+            const resultElement = document.getElementById("result");
 
-            const response = await fetch("https://finance-tool-backend-rika-h7c0a6ekh6fmhrf9.spaincentral-01.azurewebsites.net/api/calculate", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    revenue: revenue,
-                    cost: cost
-                })
-            });
+            resultElement.innerText = "Calculating...";
 
-            const data = await response.json();
+            try {
+                const response = await fetch("https://finance-tool-backend-rika-h7c0a6ekh6fmhrf9.spaincentral-01.azurewebsites.net/api/calculate", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        revenue: revenue,
+                        cost: cost
+                    })
+                });
 
-            if (data.profit !== undefined) {
-                document.getElementById("result").innerText = "Profit: $" + data.profit;
-            } else {
-                document.getElementById("result").innerText = "Error: " + data.error;
+                const data = await response.json();
+
+                if (response.ok && data.profit !== undefined) {
+                    resultElement.innerText = "Profit: $" + data.profit;
+                } else {
+                    resultElement.innerText = "Error: " + (data.error || "Unknown error");
+                }
+            } catch (error) {
+                resultElement.innerText = "Request failed: " + error.message;
             }
         }
     </script>
